@@ -7,7 +7,7 @@ def cleanFile(infilename):
     outfilename = infilename[9:16] + "clean.csv"
     with open(infilename, 'r', newline='') as csvfileR:
         with open("Cleaned Files/" + outfilename, 'w') as csvfileW:
-            reader = csv.reader(csvfileR, quoting=csv.QUOTE_NONE)
+            reader = csv.reader(csvfileR, quotechar = '\"')
             writer = csv.writer(csvfileW)
             fields = ['Start Date', 'End Date', 'Program Title', 'Faculty Director', 'Term', 'Number of Participants', 'Country', 'Countries Visited', 'Photos']
             writer.writerow(fields)
@@ -35,6 +35,7 @@ def cleanFile(infilename):
                     endMonth = "08"
                 array.append(str(startYear) + "/" + startMonth) #start date
                 array.append(str(endYear) + "/" + endMonth) #end date
+                array.append(row[1]) #Name of program
                 array.append(row[2]) #faculty director
                 array.append(row[3]) #term
                 array.append(row[4]) #number of participants
